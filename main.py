@@ -3,6 +3,9 @@ from tkinter import filedialog, Text, scrolledtext, messagebox
 from tkinter import ttk
 import os
 
+# Store the base directory
+base_dir = os.path.dirname(os.path.abspath(__file__))
+
 # Initialise Tkinter
 root = tk.Tk()
 root.title("Smart Contract Builder")
@@ -39,9 +42,12 @@ def insert_file(event=None):
     # Get selected file
     file = listbox.get(listbox.curselection())
 
+    # Form the full path to the file
+    full_path = os.path.join(base_dir, file)
+
     # Read the file
     try:
-        with open(file, "r") as f:
+        with open(full_path, "r") as f:
             content = f.read()
 
         # Insert content at cursor position
