@@ -1,0 +1,11 @@
+[package]
+name = 'flipper'
+version = '0.1.0'
+authors = ['Your Name <your.email@gmail.com>']
+edition = '2018'
+
+[lib]
+crate-type = ['cdylib', 'rlib']
+
+[dependencies]
+ink_lang = { version = "3.0.0-rc3", git = "https://github.com/paritytech/ink", tag = "latest-v3", default-features = false }
