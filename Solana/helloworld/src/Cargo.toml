@@ -1,0 +1,9 @@
+[package]
+name = "helloworld"
+version = "0.1.0"
+edition = "2018"
+description = "A minimal Solana program"
+authors = ["Solana Maintainers <maintainers@solana.foundation>"]
+
+[dependencies]
+solana-program = "1.7.8"
