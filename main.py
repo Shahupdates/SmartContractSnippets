@@ -1,33 +1,35 @@
 import tkinter as tk
-from tkinter import filedialog, Text
+from tkinter import filedialog, Text, scrolledtext, messagebox
+import os
 
 # Initialise Tkinter
 root = tk.Tk()
 root.title("Smart Contract Builder")
 root.geometry("800x600")
 
-# Create frames for file selection and text editor
-frame1 = tk.Frame(root, bg="#263D42")
-frame1.place(relwidth=0.3, relheight=1)
+# Change the theme of the application
+root.style = tk.ttk.Style(root)
+root.style.theme_use("clam")  # Change according to your preference
 
-frame2 = tk.Frame(root, bg="#263D42")
-frame2.place(relx=0.3, relwidth=0.7, relheight=1)
+# Function to get files from the directory
+def get_files(dir_path):
+    files = []
+    for root, dirs, filenames in os.walk(dir_path):
+        for filename in filenames:
+            files.append(os.path.join(root, filename))
+    return files
 
 # Create Listbox for file selection
-listbox = tk.Listbox(frame1, font=("Helvetica", 16))
-listbox.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
+listbox = tk.Listbox(root, font=("Consolas", 12))
+listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
 # Add file names to the Listbox
-listbox.insert(tk.END, "Ethereum/ERC20.sol")
-listbox.insert(tk.END, "Ethereum/ERC721.sol")
-listbox.insert(tk.END, "BinanceSmartChain/BEP20.sol")
-listbox.insert(tk.END, "BinanceSmartChain/BEP721.sol")
-listbox.insert(tk.END, "Solana/helloworld/lib.rs")
-listbox.insert(tk.END, "Polkadot/flipper/lib.rs")
+for file in get_files("SmartContractSnippets"):
+    listbox.insert(tk.END, file)
 
 # Create Text widget for text editor
-text = tk.Text(frame2, font=("Helvetica", 16))
-text.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
+text = scrolledtext.ScrolledText(root, undo=True, font=("Consolas", 12))
+text.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
 
 # Function to open the selected file and insert its content at the cursor position
 def insert_file():
@@ -35,14 +37,16 @@ def insert_file():
     file = listbox.get(listbox.curselection())
 
     # Read the file
-    with open(file, "r") as f:
-        content = f.read()
+    try:
+        with open(file, "r") as f:
+            content = f.read()
 
-    # Insert content at cursor position
-    text.insert(tk.INSERT, content)
+        # Insert content at cursor position
+        text.insert(tk.INSERT, content)
+    except Exception as e:
+        messagebox.showerror("Error", f"Could not read file: {e}")
 
-# Create button to insert the selected file
-button = tk.Button(frame1, text="Insert snippet", command=insert_file)
-button.pack(side=tk.BOTTOM, padx=10, pady=10)
+# Bind double click event to listbox
+listbox.bind("<Double-Button-1>", lambda x: insert_file())
 
 root.mainloop()
