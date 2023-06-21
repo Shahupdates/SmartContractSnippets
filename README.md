@@ -1,4 +1,5 @@
 # SmartContractSnippets
+![1bd2b81e66e645d47458c6a89e8f5a5b](https://github.com/Shahupdates/SmartContractSnippets/assets/120000782/9e51df01-3482-47e6-ae06-3ef85573741a)
 
 This repository contains smart contract code snippets for various blockchain platforms. It is designed to help developers kickstart their smart contract development by providing foundational pieces of code.
 
