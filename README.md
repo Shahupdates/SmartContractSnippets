@@ -13,7 +13,7 @@ This repository contains smart contract code snippets for various blockchain pla
 
 We have also provided a simple GUI application to help you build smart contracts from the snippets. Here's how to use it:
 
-1. Run the application by executing `python app.py` in the terminal.
+1. Run the application by executing `python main.py` in the terminal.
 2. In the left pane of the application, select the snippet you want to insert.
 3. Click the "Insert snippet" button.
 4. The content of the snippet will be inserted at the cursor position in the right pane, which functions as a basic text editor.
