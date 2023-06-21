@@ -18,10 +18,10 @@ listbox = tk.Listbox(frame1, font=("Helvetica", 16))
 listbox.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
 
 # Add file names to the Listbox
-listbox.insert(tk.END, "Ethereum/ERC20Basic.sol")
-listbox.insert(tk.END, "Ethereum/ERC721Basic.sol")
-listbox.insert(tk.END, "BinanceSmartChain/BEP20Basic.sol")
-listbox.insert(tk.END, "BinanceSmartChain/BEP721Basic.sol")
+listbox.insert(tk.END, "Ethereum/ERC20.sol")
+listbox.insert(tk.END, "Ethereum/ERC721.sol")
+listbox.insert(tk.END, "BinanceSmartChain/BEP20.sol")
+listbox.insert(tk.END, "BinanceSmartChain/BEP721.sol")
 listbox.insert(tk.END, "Solana/helloworld/lib.rs")
 listbox.insert(tk.END, "Polkadot/flipper/lib.rs")
 
