@@ -9,6 +9,20 @@ This repository contains smart contract code snippets for various blockchain pla
 3. [Solana](#solana)
 4. [Polkadot](#polkadot)
 
+## GUI Application
+
+We have also provided a simple GUI application to help you build smart contracts from the snippets. Here's how to use it:
+
+1. Run the application by executing `python app.py` in the terminal.
+2. In the left pane of the application, select the snippet you want to insert.
+3. Click the "Insert snippet" button.
+4. The content of the snippet will be inserted at the cursor position in the right pane, which functions as a basic text editor.
+
+You can repeat these steps to insert as many snippets as you need. Remember to review and modify the inserted code as necessary.
+
+Please note that this application requires Python and Tkinter to be installed.
+
+
 ## Basic structure as a directory tree
 
 ```
@@ -33,10 +47,11 @@ SmartContractSnippets
 │   │   │   └── lib.rs
 │   │   └── Cargo.toml
 └── Polkadot
-    ├── README.md
-    └── flipper
-        ├── lib.rs
-        └── Cargo.toml
+│   ├── README.md
+│   └── flipper
+│       ├── lib.rs
+│       └── Cargo.toml
+└── main.py
 ```
 
 ### Ethereum
