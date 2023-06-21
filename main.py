@@ -17,7 +17,8 @@ def get_files(dir_path):
     files = []
     for root, dirs, filenames in os.walk(dir_path):
         for filename in filenames:
-            files.append(os.path.join(root, filename))
+            if filename.endswith((".sol", ".rs")):
+                files.append(os.path.join(root, filename).replace(dir_path + os.sep, ''))
     return files
 
 # Create Listbox for file selection
@@ -25,8 +26,9 @@ listbox = tk.Listbox(root, font=("Consolas", 12))
 listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
 # Add file names to the Listbox
-for file in get_files("SmartContractSnippets"):
-    listbox.insert(tk.END, file)
+for folder in ["Ethereum", "BinanceSmartChain", "Solana", "Polkadot"]:
+    for file in get_files(folder):
+        listbox.insert(tk.END, file)
 
 # Create Text widget for text editor
 text = scrolledtext.ScrolledText(root, undo=True, font=("Consolas", 12))
