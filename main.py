@@ -43,7 +43,10 @@ def insert_file(event=None):
     file = listbox.get(listbox.curselection())
 
     # Form the full path to the file
-    full_path = os.path.join(base_dir, file)
+    full_path = os.path.join(base_dir, file.lstrip(os.sep))
+    
+    # Convert the path to a raw string
+    full_path = r'{}'.format(full_path)
 
     # Read the file
     try:
