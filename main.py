@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog, Text, scrolledtext, messagebox
+from tkinter import ttk
 import os
 
 # Initialise Tkinter
@@ -8,8 +9,8 @@ root.title("Smart Contract Builder")
 root.geometry("800x600")
 
 # Change the theme of the application
-root.style = tk.ttk.Style(root)
-root.style.theme_use("clam")  # Change according to your preference
+style = ttk.Style(root)
+style.theme_use("clam")  # Change according to your preference
 
 # Function to get files from the directory
 def get_files(dir_path):
@@ -32,7 +33,7 @@ text = scrolledtext.ScrolledText(root, undo=True, font=("Consolas", 12))
 text.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
 
 # Function to open the selected file and insert its content at the cursor position
-def insert_file():
+def insert_file(event=None):
     # Get selected file
     file = listbox.get(listbox.curselection())
 
@@ -47,6 +48,6 @@ def insert_file():
         messagebox.showerror("Error", f"Could not read file: {e}")
 
 # Bind double click event to listbox
-listbox.bind("<Double-Button-1>", lambda x: insert_file())
+listbox.bind("<Double-Button-1>", insert_file)
 
 root.mainloop()
