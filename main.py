@@ -21,7 +21,8 @@ def get_files(dir_path):
     for root, dirs, filenames in os.walk(dir_path):
         for filename in filenames:
             if filename.endswith((".sol", ".rs")):
-                files.append(os.path.join(root, filename).replace(dir_path + os.sep, ''))
+                relative_path = os.path.relpath(root, dir_path)
+                files.append(os.path.join(relative_path, filename))
     return files
 
 # Create Listbox for file selection
